@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE tiles-definitions PUBLIC  
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="DefaultTemplate" template="/WEB-INF/views/template/main.jsp">
+			<put-attribute name="title" value="My Kid My World" />
+			<put-attribute name="header" value="/WEB-INF/views/template/header.jsp" />
+			<put-attribute name="menu" value="/WEB-INF/views/template/menu.jsp" />
+			<put-attribute name="sideNav" value="" />
+			<put-attribute name="body" value="" />
+			<put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp" />
+	</definition>
+	
+	<definition name="home" template="/WEB-INF/home.jsp">
+	</definition>
+	
+	<definition name="welcome" extends="DefaultTemplate">
+	    <put-attribute name="body" value="/WEB-INF/welcome/welcomeHome.jsp" />
+	</definition>
+	
+	<definition name="graniStories" extends="DefaultTemplate">
+	    <put-attribute name="sideNav" value="/WEB-INF/views/graniStories/graniFilter.jsp" />
+	    <put-attribute name="body" value="/WEB-INF/views/graniStories/graniStories.jsp" />
+	</definition>
+	
+	<definition name="readStories" extends="DefaultTemplate">
+	    <put-attribute name="body" value="/WEB-INF/views/graniStories/readStories.jsp" />
+	</definition>
+	
+	<definition name="myStories" extends="DefaultTemplate">
+<!-- 	    <put-attribute name="sideNav" value="/WEB-INF/graniStories/graniFilter.jsp" /> -->
+	    <put-attribute name="body" value="/WEB-INF/myStories/myStories.jsp" />
+	</definition>
+	
+	<definition name="myIdeas" extends="DefaultTemplate">
+<!-- 	    <put-attribute name="sideNav" value="/WEB-INF/graniStories/graniFilter.jsp" /> -->
+	    <put-attribute name="body" value="/WEB-INF/myIdeas/myIdeas.jsp" />
+	</definition>
+	
+	<definition name="myPics" extends="DefaultTemplate">
+<!-- 	    <put-attribute name="sideNav" value="/WEB-INF/graniStories/graniFilter.jsp" /> -->
+	    <put-attribute name="body" value="/WEB-INF/myPics/myPics.jsp" />
+	</definition>
+
+</tiles-definitions>

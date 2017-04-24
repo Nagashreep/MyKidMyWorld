@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<view-state id="start" view="welcome">
+		<transition on="graniStories">
+			<render fragments="graniStories"></render> 
+		</transition>
+		<transition on="myStories" to="myStories"></transition>
+		<transition on="myIdeas" to="myIdeas"></transition>
+		<transition on="myPics" to="myPics"></transition>
+	</view-state>
+	
+	<view-state id="myStories" view="myStories"/>
+	
+	<view-state id="graniStories" view="graniStories">
+		<on-entry>
+			<evaluate expression="dataService.fetchData(1)" result="flowScope.stories"></evaluate>
+			<evaluate expression="dataService.fetchCriterias()" result="flowScope.criteriaMap"></evaluate>
+		</on-entry>
+		<transition on="readStories" to="readStories"></transition>
+	</view-state>
+	
+	<view-state id="readStories" view="readStories">
+		<on-entry>
+			<set name="requestScope.id" value="requestParameters.id" />
+			<evaluate expression="dataService.readStories()" result="viewScope.story"></evaluate>
+		</on-entry>
+	</view-state>
+	
+	<view-state id="myIdeas" view="myIdeas"/>
+	
+	<view-state id="myPics" view="myPics"/>
+
+</flow>
